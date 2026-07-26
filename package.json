@@ -1,0 +1,13 @@
+{
+  "name": "starred-repo-manager",
+  "version": "1.0.0",
+  "description": "Local web app to bulk manage GitHub starred repos via gh CLI",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

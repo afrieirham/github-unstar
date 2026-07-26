@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Starred Repo Manager</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      :root {
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --border: #e2e8f0;
+        --text: #0f172a;
+        --muted: #64748b;
+        --accent: #2563eb;
+        --danger: #dc2626;
+        --ok: #16a34a;
+      }
+      .btn-danger { color: #fef2f2; }
+      .error { color: #7f1d1d; }
+      .tag.warn { color: #b45309; }
+      .toast { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12); }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div>
+          <h1>★ Starred Repo Manager</h1>
+          <p class="subtitle">
+            Local-only · powered by
+            <code>gh</code>
+          </p>
+        </div>
+        <div class="header-meta">
+          <span id="authStatus" class="badge">Checking…</span>
+          <button id="btnRefresh" class="btn">Refresh</button>
+        </div>
+      </header>
+
+      <section class="toolbar">
+        <input
+          id="search"
+          type="search"
+          placeholder="Search name, owner, description, language…"
+          autocomplete="off"
+        />
+        <div class="filters">
+          <label>
+            <input type="checkbox" id="hideArchived" />
+            Hide archived
+          </label>
+          <label>
+            <input type="checkbox" id="hideForks" />
+            Hide forks
+          </label>
+          <select id="sortBy">
+            <option value="starred_at_desc">Starred (newest)</option>
+            <option value="starred_at_asc">Starred (oldest)</option>
+            <option value="name_asc">Name A–Z</option>
+            <option value="stars_desc">Repo stars ↓</option>
+            <option value="pushed_at_desc">Last push</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="actions">
+        <div class="selection-info">
+          <label class="select-all">
+            <input type="checkbox" id="selectAll" />
+            Select all visible
+          </label>
+          <span id="counts">0 selected · 0 shown · 0 total</span>
+        </div>
+        <div class="action-buttons">
+          <button id="btnUnstar" class="btn btn-danger" disabled>
+            Unstar selected
+          </button>
+        </div>
+      </section>
+
+      <div id="error" class="error hidden"></div>
+      <div id="toast" class="toast hidden"></div>
+
+      <main>
+        <div id="loading" class="loading hidden">Loading starred repos…</div>
+        <div id="empty" class="empty hidden">No repos match your filters.</div>
+        <ul id="list" class="repo-list"></ul>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
