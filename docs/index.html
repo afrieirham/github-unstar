@@ -590,6 +590,11 @@
       }
 
       @media (max-width: 760px) {
+        .nav-actions,
+        .brand-text {
+          display: none;
+        }
+
         .hero,
         .grid-2,
         .grid-3,
@@ -618,7 +623,7 @@
       <nav>
         <span class="brand" href="#">
           <img src="/logo.png" class="mark" />
-          github unstar
+          <span class="brand-text">github unstar</span>
         </span>
         <div class="nav-actions">
           <!-- Replace afrieirham -->
@@ -635,7 +640,7 @@
         <div>
           <div class="eyebrow">Local-only · powered by gh CLI</div>
           <h1>Bulk unstar GitHub repos</h1>
-          <p class="lead">GitHub doesn’t have bulk unstar. This does.</p>
+          <p class="lead">the tool that GitHub never build.</p>
           <div class="hero-actions">
             <a
               class="btn btn-primary btn-lg"
