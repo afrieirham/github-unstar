@@ -50,6 +50,9 @@
       </div>
       <div class="header-meta">
         <span id="authStatus" class="badge">Checking…</span>
+        <button id="btnStaged" class="btn" aria-haspopup="dialog" disabled>
+          Staged (0)
+        </button>
         <button id="btnRefresh" class="btn">Refresh</button>
       </div>
     </header>
@@ -79,14 +82,9 @@
       <div class="selection-info">
         <label class="select-all">
           <input type="checkbox" id="selectAll" />
-          Select all visible
+          Stage all visible
         </label>
-        <span id="counts">0 selected · 0 shown · 0 total</span>
-      </div>
-      <div class="action-buttons">
-        <button id="btnUnstar" class="btn btn-danger" disabled>
-          Unstar selected
-        </button>
+        <span id="counts">0 staged · 0 shown · 0 total</span>
       </div>
     </section>
 
@@ -99,6 +97,47 @@
       <ul id="list" class="repo-list"></ul>
     </main>
   </div>
+
+  <div id="drawerBackdrop" class="drawer-backdrop hidden"></div>
+  <aside id="stagedDrawer" class="drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <h2>Staged repos</h2>
+      <button id="btnCloseDrawer" class="btn btn-icon" aria-label="Close staged drawer">×</button>
+    </div>
+
+    <div id="stagedEmpty" class="drawer-empty">
+      No repos staged yet. Select repos from the list to stage them for unstar.
+    </div>
+
+    <ul id="stagedList" class="staged-list"></ul>
+
+    <div id="stagedReview" class="staged-review hidden">
+      <div class="review-summary">
+        <strong>Ready to commit</strong>
+        <p id="reviewText">You are about to unstar 0 repos.</p>
+      </div>
+      <div id="commitProgress" class="commit-progress hidden">
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <span id="progressText">Unstarring 0 of 0…</span>
+      </div>
+      <div id="commitError" class="commit-error hidden"></div>
+    </div>
+
+    <div class="drawer-footer">
+      <button id="btnUnstageAll" class="btn" disabled>
+        Unstage all
+      </button>
+      <button id="btnReview" class="btn btn-primary" disabled>
+        Review
+      </button>
+      <button id="btnCommit" class="btn btn-danger hidden">
+        Commit unstar
+      </button>
+    </div>
+  </aside>
+
   <script src="app.js"></script>
 </body>
 

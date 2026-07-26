@@ -8,7 +8,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "app")));
 
 /** Run a gh CLI command and return stdout as string */
 async function runGh(args, { timeout = 120000 } = {}) {
